@@ -4,340 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atharva.com</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
 
-        body {
-            background-color:#f5f5f5;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* Navigation Styles */
-        nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        nav ul li {
-            margin: 0 1.5rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #4CAF50;
-        }
-
-/* Hero Section */
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: black;
-    animation: fadeIn 0.5s ease-in;
-    
-    background: url('https://i.ibb.co/7N2gsWdK/IMG-20250209-223538.jpg') center/cover no-repeat;
-}
-
-/* Gradient Overlay */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0), rgba(0,0,0,0), rgba(0,0,0,0));
-}
-
-/* Text Styling */
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    position: relative; /* Ensures text appears above the gradient */
-    z-index: 1; /* Keeps text visible over gradient */
-}
-
-        /* Projects Section */
-        .projects {
-            padding: 5rem 2rem;
-        }
-
-        .projects h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-image {
-            height: 200px;
-            background: #ddd;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-info h3 {
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .project-info p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            margin-top: 1rem;
-            transition: background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn:hover {
-            background: #45a049;
-        }
-
-        /* Ripple Effect Animation */
-        @keyframes ripple {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
+    </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-    </nav>
-   <section class="hero" id="home">
-        <div class="hero-content">
-            <h1></h1>
-            <p></p>
+
+    <header id="main-header">
+        <nav class="container">
+            <a href="#hero" class="logo">Atharva.com</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content container">
+                <div class="hero-text" data-aos="fade-right" data-aos-delay="100">
+                    <h1 class="hero-title"><span class="highlight">Atharva.com</span></h1>
+                    <p class="hero-subtitle">Atharva the encoder</p>
+                    <p class="hero-description">
+                       i can build website hence i am a weber
+                    </p>
+                    <a href="#projects" class="btn btn-primary" data-aos="fade-up" data-aos-delay="300">Explore My Work</a>
+                    <a href="#contact" class="btn btn-secondary" data-aos="fade-up" data-aos-delay="400">Get In Touch</a>
+                </div>
+                </div>
+            <a href="#about" class="scroll-down" aria-label="Scroll down">↓</a>
+        </section>
+
+        <section id="about" class="container section">
+            <h2 data-aos="fade-up">About Me</h2>
+            <div class="about-grid">
+                <div class="about-image" data-aos="fade-right" data-aos-delay="100">
+                    <img src="images/profile-placeholder.png" alt="name.png">
+                </div>
+                <div class="about-text" data-aos="fade-left" data-aos-delay="200">
+                    <h3>skills</h3>
+                    <p>
+                        html,css and JavaScript aache se aati hai . python sikhi thi.. abhi nahi aati. i can speak c,c++ fluently.
+                    </p>
+                    <p>
+                       goal: game developer ya game designer. want to build GTA 7.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container section">
+             <h2 data-aos="fade-up">My Skills</h2>
+             <div class="skills-grid">
+                 <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+                     <h4>Frontend</h4>
+                     <p>HTML5, CSS3, JavaScript (ES6+)</p>
+                 </div>
+                 <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+                     <h4>Backend</h4>
+                     <p>nahi aata . i use google firebase to store data</p>
+                 </div>
+                 <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+                     <h4>Design</h4>
+                     <p>mens are bad in designing ui/ux</p>
+                 </div>
+                 <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+                     <h4>Tools & Other</h4>
+                     <p>Git,firebase, chatgpt prompt expert</p>
+                 </div>
+             </div>
+        </section>
+
+        <section id="projects" class="container section">
+            <h2 data-aos="fade-up">Projects</h2>
+            <div class="project-grid">
+
+
+
+
+
+
+                <!--------------project1------------------->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="https://i.ibb.co/wNy9G42w/IMG-20250209-173635.jpg" alt="Project 1 Screenshot">
+                    </div>
+                    <div class="project-info">
+                        <h3>whatsApp clone</h3>
+                        <p>whatsApp ka clone project</p>
+                        <div class="project-tags">
+                            <span>html</span><span>css</span><span>javascript</span> </div>
+                        <div class="project-links">
+                            <a href="https://project11135.netlify.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                            <a href="#" target="_blank" class="btn btn-small btn-secondary">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <!--------------project2------------------->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                     <div class="project-image">
+                        <img src="https://i.ibb.co/GvjsfdK6/IMG-20250204-172415.jpg" alt="Project 1" alt="Project 2 Screenshot">
+                    </div>
+                    <div class="project-info">
+                        <h3>flappy bird</h3>
+                        <p>flappy bird game</p>
+                        <div class="project-tags">
+                            <span>html</span><span>css</span><span>javascript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://flappytai.netlify.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                            <a href="#" target="_blank" class="btn btn-small btn-secondary">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+           
+
+
+
+
+
+
+                 </div>
+        </section>
+
+
+
+
+
+        <section id="contact" class="section contact-section">
+            <div class="container" data-aos="fade-up">
+                <h2>buy me a coffee</h2>
+                <p>buy me a coffee at atharvahadke@fam</p>
+                <a href="upi://pay?pa=atharvahadke@fam&pn=Atharva Hadke" class="btn btn-primary contact-button">click</a>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/atharvahadke11/?next=%2F#" target="_blank" aria-label="LinkedIn Profile" data-aos="fade-up" data-aos-delay="100">instagram</a> <a href="#" target="_blank" aria-label="GitHub Profile" data-aos="fade-up" data-aos-delay="200">GitHub</a>
+                    <a href="" target="_blank" aria-label="Twitter Profile" data-aos="fade-up" data-aos-delay="300"></a>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> atharva.com</p>
+             <a href="#hero" class="back-to-top" aria-label="Back to top">↑</a>
         </div>
-    </section>
+    </footer>
 
-    <section class="projects" id="projects">
-        <h2>Atharva.com</h2>
-        <h4>projects</h4>
-        <div class="project-grid"><a href=""></a>
-        
-        
-        
-        
-            <!------ Project 1 ------>
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.ibb.co/GvjsfdK6/IMG-20250204-172415.jpg" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>flappyt bird</h3>
-                    <p>flappy bird clone</p>
-                    <a href="http://flappytai.netlify.app" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-            
-            <!-------project 2------->
-           <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.ibb.co/wNy9G42w/IMG-20250209-173635.jpg" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>whatsapp clone</h3>
-                    <p>whatsapp clone bana</p>
-                    <a href="http://project0110.netlify.app" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-            
-         <!------project 3------->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.ibb.co/p6XvfCgw/IMG-20250209-222453.jpg" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>Amazon clone</h3>
-                    <p>krupaya is project ko desktop site mai open kare(website mai kuch kami hai)</p>
-                    <a href="https://project10110.netlify.app" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-
-
-                     <!------project 4------->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.ibb.co/rf66x4PJ/Screenshot-2025-02-13-19-01-16-324-com-android-chrome.png" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>calculator</h3>
-                    <p>divide by zero is avaible</p>
-                    <a href="https://project10100.netlify.app" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-
-
-            <!------project 5------->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="https://i.ibb.co/xtJY4FHJ/download.jpg" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>PUBG:mobile</h3>
-                    <p>Error:404</p>
-                    <a href="https://project10001.netlify.app/" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-
-
-            <!------project 6------->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>volume controller</h3>
-                    <p>use hand gestures to control audio</p>
-                    <a href="https://project00110.netlify.app/" class="btn" target="_blank">View Project</a>
-                </div>
-            </div>
-
-            
-
-
-
-
-
-
-            <!-- Add more project cards as needed -->
-        </div>
-    </section>
-<div><p>more projects will be added soon..</p></div>
-    <script>
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                let ripple = document.createElement('div');
-                ripple.style.position = 'absolute';
-                ripple.style.width = '20px';
-                ripple.style.height = '20px';
-                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
-                ripple.style.borderRadius = '50%';
-                ripple.style.transform = 'translate(-50%, -50%)';
-                ripple.style.pointerEvents = 'none';
-                ripple.style.left = e.clientX - this.offsetLeft + 'px';
-                ripple.style.top = e.clientY - this.offsetTop + 'px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 500);
-            });
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
-</html>
+  </html>
+  
