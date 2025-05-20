@@ -1,6 +1,6 @@
 {
-  "name": "My Custom App",
-  "short_name": "CustomApp",
+  "name": "Atharva.com",
+  "short_name": "Atharva.com",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
