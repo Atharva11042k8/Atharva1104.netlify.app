@@ -103,3 +103,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 }); 
+
+
+
+
+
+
+
+
+// Secret Feature: Long Press on Footer Text
+const footerText = document.querySelector('footer p');
+
+if (footerText) {
+    let pressTimer;
+
+    footerText.addEventListener('mousedown', () => {
+        pressTimer = setTimeout(() => {
+            window.open("https://example.com", "_blank"); // Replace with your secret URL
+        }, 3000); // 3 seconds
+    });
+
+    footerText.addEventListener('mouseup', () => {
+        clearTimeout(pressTimer);
+    });
+
+    footerText.addEventListener('mouseleave', () => {
+        clearTimeout(pressTimer);
+    });
+
+    // For mobile (touch events)
+    footerText.addEventListener('touchstart', () => {
+        pressTimer = setTimeout(() => {
+            window.open("jeerevision11.netlify.app", "_blank"); // Replace with your secret URL
+        }, 3000);
+    });
+
+    footerText.addEventListener('touchend', () => {
+        clearTimeout(pressTimer);
+    });
+}
