@@ -111,34 +111,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Secret Feature: Long Press on Footer Text
-const footerText = document.querySelector('footer p');
+// Secret Feature: Long-press on GitHub button (>= 3 seconds)
+(function attachGithubLongPress() {
+  const githubBtn = document.querySelector('a[aria-label="GitHub Profile"]');
+  if (!githubBtn) return; // no-op if element isn't present
 
-if (footerText) {
-    let pressTimer;
+  const LONG_PRESS_DURATION = 3000; // ms
+  const MOVE_THRESHOLD_PX = 10; // cancel if finger moves this much
+  const secretUrl = githubBtn.dataset.secretUrl || 'https://example.com';
 
-    footerText.addEventListener('mousedown', () => {
-        pressTimer = setTimeout(() => {
-            window.open("https://example.com", "_blank"); // Replace with your secret URL
-        }, 3000); // 3 seconds
-    });
+  let pressTimer = null;
+  let longPressed = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
 
-    footerText.addEventListener('mouseup', () => {
-        clearTimeout(pressTimer);
-    });
+  const startPress = (e) => {
+    longPressed = false;
+    clearTimeout(pressTimer);
 
-    footerText.addEventListener('mouseleave', () => {
-        clearTimeout(pressTimer);
-    });
+    // capture initial touch position (for mobile)
+    if (e.type === 'touchstart' && e.touches && e.touches[0]) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
 
-    // For mobile (touch events)
-    footerText.addEventListener('touchstart', () => {
-        pressTimer = setTimeout(() => {
-            window.open("jeerevision11.netlify.app", "_blank"); // Replace with your secret URL
-        }, 3000);
-    });
+    // start timer
+    pressTimer = setTimeout(() => {
+      longPressed = true;
+      // open secret url in a new tab/window (noopener for security)
+      try {
+        window.open(secretUrl, '_blank', 'noopener');
+      } catch (err) {
+        // fallback: set location (rare)
+        window.location.href = secretUrl;
+      }
+    }, LONG_PRESS_DURATION);
+  };
 
-    footerText.addEventListener('touchend', () => {
-        clearTimeout(pressTimer);
-    });
-}
+  const cancelPress = () => {
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      pressTimer = null;
+    }
+  };
+
+  // Mouse events
+  githubBtn.addEventListener('mousedown', startPress);
+  githubBtn.addEventListener('mouseup', cancelPress);
+  githubBtn.addEventListener('mouseleave', cancelPress);
+
+  // Touch events (mobile)
+  githubBtn.addEventListener('touchstart', startPress, { passive: true });
+  githubBtn.addEventListener('touchend', cancelPress);
+  githubBtn.addEventListener('touchcancel', cancelPress);
+  githubBtn.addEventListener('touchmove', function (e) {
+    // cancel if finger moved significantly
+    if (e.touches && e.touches[0]) {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if (dx > MOVE_THRESHOLD_PX || dy > MOVE_THRESHOLD_PX) {
+        cancelPress();
+      }
+    }
+  }, { passive: true });
+
+  // If the long-press already opened the secret, block the normal click navigation
+  githubBtn.addEventListener('click', function (e) {
+    if (longPressed) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      longPressed = false; // reset for future interactions
+      // small delay reset guard (optional)
+      setTimeout(() => { longPressed = false; }, 50);
+    }
+    // otherwise, normal click behavior happens (honors href)
+  });
+})();
