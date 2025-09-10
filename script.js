@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const LONG_PRESS_DURATION = 3000; // ms
   const MOVE_THRESHOLD_PX = 10; // cancel if finger moves this much
-  const secretUrl = githubBtn.dataset.secretUrl || 'https://example.com';
+  const secretUrl = 'https://jeerevision11.netlify.app';
 
   let pressTimer = null;
   let longPressed = false;
